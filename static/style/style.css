@@ -1,0 +1,366 @@
+@import 'reset.css';
+
+.question-container{
+    background-image: url("../img/questionBG.png");
+    background-repeat: no-repeat;
+    height: 657px;
+    width:70%;
+    position: relative;
+}
+#exit{
+    height: 40px; 
+    background-color:#e6e9ee; 
+    border:0;
+    cursor: pointer;
+}
+#next{
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+}
+#prev{
+    position: absolute;
+    bottom: 75px;
+    left: 0;
+}
+.question{
+    display: flex;
+    margin-top: 20px;
+    height: 460px;
+}
+.question-content{
+    margin-top: 22px;
+    width: 50%;
+    padding: 40px;
+}
+input[type="radio"]{
+    display: none;
+}
+.answers label{
+    height: 200px;
+    width: 300px;
+    border-radius: 20px;
+    border: 1px solid #e4448a;
+    color: #e4448a;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin: 1px;
+}
+input[type="radio"]:checked + label{
+    background-color:#e4448a;
+    color: white;
+}
+.answers{
+    margin-top: 50px;
+    width: 50%;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.true{
+    color:green;
+}
+
+.false{
+    color:red;
+}
+
+.clip{
+    background-image:url("../img/clip.png");
+    height: 25px;
+    width: 100%;
+}
+.header{
+    background-color:#e6e9ee;
+    width: 100%;
+    height: 100px;
+    display:flex;
+    flex-wrap:wrap;
+}
+.header-index{
+    background-color: #13181c;
+    box-shadow: -3px 3px 14px black;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+}
+
+.header-index .menu{
+    list-style: none;
+    display: flex;
+    width: 400px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+.header-index .menu a{
+    color: white;
+    text-decoration: none;
+}
+.header-index .menu a:hover{
+    color:#d5ba08;
+}
+.user-menu{
+    position: fixed;
+    transform: translateX(-14px);
+    background-color: rgb(213, 186, 8);
+}
+.user-menu a:hover{
+    color: white !important;
+}
+.user-menu a{
+    color: #000 !important;
+}
+.header-items{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+}
+.Logo{
+    height: 55px;
+    margin-left: 20px;
+}
+
+.time{
+    position: relative;
+}
+
+.time #countdown{
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-60%, -100%);
+  color: blue;
+  font-weight: bold;
+}
+
+.exam-type p{
+    text-align: center;
+}
+.exam-type span,.user-info span{
+    color:#e4448a;
+}
+
+.exam-type,.user-info{
+    border-right: 1px solid #b9b9b9;
+    padding-right: 40px;
+}
+
+.btn {
+    background: black;
+    border: black solid 1px;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px 15px;
+    text-decoration: none;
+    text-align: center;
+    min-width: 60px;
+    position: relative;
+}
+
+.btn-close {
+    color: #aaa;
+    font-size: 30px;
+    text-decoration: none;
+    position: absolute;
+    right: 5px;
+    top: 0;
+}
+.btn-close:hover {
+    color: #919191;
+}
+.modal:before {
+    content: "";
+    display: none;
+    background: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+.modal:target:before {
+    display: block;
+}
+.modal:target .modal-dialog {
+    transform: translate(0,0);
+    top: 20%;
+}
+.modal-dialog {
+    background: #fefefe;
+    border: #333 solid 1px;
+    border-radius: 5px;
+    margin-left: 30%;
+    position: fixed;
+    z-index: 11;
+    width: 40%;
+    transform: translate(0,-500%);
+    transition: transform 0.3s ease-out;
+    text-align: right;
+}
+.modal-body {
+    padding: 20px;
+}
+.modal-header, .modal-footer {
+    padding: 10px 20px;
+}
+.modal-header {
+    border-bottom: #eee solid 1px;
+}
+.modal-header h2 {
+    font-size: 20px;
+}
+.modal-footer {
+    border-top: #eee solid 1px;
+    text-align: right;
+}
+
+.quest-no{
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.quest-no .check-field{
+    text-decoration: none;
+    color: #e4448a;
+    height: 24px;
+    width: 24px;
+    display: block;
+    border-radius: 50px;
+    text-align: center;
+    border: 1px solid #e4448a;
+    background-color:white;
+}
+
+.quest-no a{
+    text-decoration: none;
+    color: #e4448a;
+    text-align: center;
+    border-bottom: 1px solid;
+    margin: 0 10px 10px 0;
+    padding-bottom: 10px;
+}
+.quest-no p{
+    margin: 0;
+}
+
+
+
+.signup {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 70px;
+}
+.login{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 200px;
+}
+.signup h1 ,.login h1{
+    padding: 30px;
+    background-color: #ebebeb;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.loginForm, .signupForm{
+    background-color: #f9f9f9;
+    padding: 40px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.loginForm form,.signupForm form,.address-form form{
+    width: 100%;
+    text-align: left;
+    display: inline-grid;
+}
+
+.loginForm form input,.signupForm form input{
+    height: 30px;
+    border: 1px solid #e7e7e7;
+    text-align: left;
+}
+.loginForm form label,.signupForm form label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: right;
+}
+.loginForm form button,.signupForm form button{
+    height: 36px;
+    margin-top: 20px;
+    width: 110px;
+    border: 0;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.loginForm form button:hover,.signupForm form button:hover{
+    background-color: grey;
+    color: white;
+}
+
+.contact-body{
+    margin-top: 230px;
+}
+
+.contact-body h1{
+    text-align: center;
+    font-size:2vw;
+}
+
+.contact-m{
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.contact-info{
+    margin-left: 100px;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+.contact-info p{
+    background-color: #efefef;
+    padding: 20px;
+    width: 164px;
+    height: 122px;
+    margin: 10px;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px 1px;
+}
+.contact-info p i{
+    font-size: 2.5vw;
+}
+
+.contact-info a{
+    color:#000;
+    text-decoration: none;
+}
+.contact-info p:hover{
+    background-color: #c7c7c7;
+}

@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+{%block lang%}
+<html lang="ar">
+{%endblock%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css'%}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>
+        {%block title%}
+        {%endblock%}
+    </title> 
+</head>
+<body>
+    <header class="header-index">
+    
+        <a href="{% url 'index'%}"><img src="{%static 'img/Logo.png'%}" class="Logo" alt="Logo"></a>
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+          <li><a href="/exam/">الإمتحان التجريبي</a></li>
+          <li><a href="{% url 'contact'%}">التواصل</a></li>
+          <li><a href="#payment">الإشتراك</a></li>
+          {%if not request.user.is_authenticated%}
+            <li><a href="{%url 'signup'%}">
+                التسجيل
+            </a></li>
+            <li><a href="{%url 'login'%}">
+                تسجيل الدخول
+            </a></li>
+            {%else%}
+            <li>
+                <p id="user">{{user.username}}</p>
+                <div class="user-menu"style="display: none;">
+                <a href="#profile">
+                    البروفايل
+                </a>
+                <a href="{%url 'logout'%}">
+                    تسجيل الخروج
+                </a>
+                </div>
+            </li>
+            {%endif%}
+        </ul>
+      </header>
+    {%block content%}
+    {%endblock%}
+
+    <script>
+        var user = document.getElementById("user");
+        var menu = document.getElementsByClassName("user-menu")[0];
+        user.onmouseover =  function(){
+            menu.style.display = "grid";
+        };
+        menu.onmouseover = user.onmouseover;
+        user.onmouseout = function(){
+            menu.style.display = "none";
+        };
+        menu.onmouseout = user.onmouseout;
+    </script>
+</body>
+</html>
+

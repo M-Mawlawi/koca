@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+
+{%block title%}
+    تسجيل الدخول | مكتب القوجة
+{%endblock%}
+{%block content%}
+    <div class="login">
+        <h1>تسجيل الدخول</h1>
+        <div class="loginForm">
+            <form action="" method="post">
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" name="username" id="username">
+                <label for="password">كلمة المرور:</label>
+                <input type="password" name="password" id="password">
+                <div style="display: flex; justify-content: space-between;"><button>تسجيل الدخول</button> <div style="display: grid;align-content: space-evenly;margin-top: 20px; color: black; text-align:right;"><a href="" style="text-decoration:underline; color:black;">!نسيت كلمة المرور</a> <a href="/signup" style="text-decoration:underline; color:black;">ليس لدي حساب</a></div></div>
+            </form>
+        </div>
+    </div>
+{%endblock%}

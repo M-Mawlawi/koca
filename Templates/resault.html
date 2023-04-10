@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النتيجة | مكتب القوجة</title>
+</head>
+<body>
+    <p>{{answers.count}}/50</p> <br>
+    <p>{{resault}}/100</p> <br>
+    {%for answer in answers%}
+        {{answer.question_id.question}}<br>
+        <p class="{%if answer.question_id.A == answer.question_id.t_answer%}true{%elif answer.question_id.A == answer.answer%}false{%endif%}">{{answer.question_id.A}}</p>
+        <p class="{%if answer.question_id.B == answer.question_id.t_answer%}true{%elif answer.question_id.B == answer.answer%}false{%endif%}">{{answer.question_id.B}}</p>
+        <p class="{%if answer.question_id.C == answer.question_id.t_answer%}true{%elif answer.question_id.C == answer.answer%}false{%endif%}">{{answer.question_id.C}}</p>
+        <p class="{%if answer.question_id.D == answer.question_id.t_answer%}true{%elif answer.question_id.D == answer.answer%}false{%endif%}">{{answer.question_id.D}}</p>
+    {%endfor%}
+    <a href="/"><button>الصفحة الرئيسية</button></a>
+</body>
+</html>

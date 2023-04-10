@@ -1,0 +1,111 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css'%}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+    <title>الامتحان التجريبي | مكتب القوجة</title>
+</head>
+<body>
+    <form action="{%if question.has_next%}{{question.next_page_number}}{%endif%}" method="post" style="background-color:#192026;">
+    <div class="header">
+        <div class="clip"></div>
+        <div class="header-items">
+            <img src="{%static 'img/Logo.png'%}" alt="Logo" class="Logo">
+            <div class="user-info">
+                <p><span>Sayın :</span>{{request.user.first_name}} {{request.user.last_name}}</p>
+                <p><span>TC:</span>{{request.user.users.tc}}</p>
+            </div>
+            <div class="exam-type">
+                <p>
+                    <span>Sınav Türü</span><br>
+                    MEB ESINAV DENEME
+                </p>
+            </div>
+        <div class="time">
+            <img src="{%static 'img/remaining.png'%}" alt="remaining">
+            <p id="countdown"></p>
+        </div>
+        <button name="exit" id="exit" value="exit"><img src="{%static 'img/endtest.png'%}" alt="end"></button>
+        </div>  
+    </div>
+    {%for quest in question.object_list%}
+    <div class="modal" id="modal-one" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-header">
+            <h2>{{quest.question_arabic}}</h2>
+            <a href="#" class="btn-close" aria-hidden="true">×</a>
+        </div>
+        <div class="modal-body">
+            <p>{{quest.A_arabic}}(A</p>
+            <p>{{quest.B_arabic}}(B</p>
+            <p>{{quest.C_arabic}}(C</p>
+            <p>{{quest.D_arabic}}(D</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn">إغلاق</a>
+        </div>
+        </div>
+    </div>
+    {%endfor%}
+        
+    <div class="question-container">
+        <input type="hidden" name="id" value="{{id}}">
+        {%for quest in question.object_list%}
+        <input type="hidden" name="page" value="{{question.number}}">
+            <div class="question">
+                <div class="question-content">
+                    <p>Soru :{{question.number}}</p>
+                    <a href="#modal-one">اللغة العربية</a>
+                    <p>{{quest.question}}</p><br>
+                    
+                    {%if quest.photo%}
+                        <img src="{{quest.photo.url}}" alt="question image">
+                    {%endif%}
+                </div>
+                <div class="answers">
+                    <input type="radio" name="answer" class="answer" id="A" value="{{quest.A}}" {%if selected.answer == quest.A%}checked{%endif%}><label for="A">A){{quest.A}}</label>
+                    <input type="radio" name="answer" class="answer" id="B" value="{{quest.B}}" {%if selected.answer == quest.B%}checked{%endif%}><label for="B">B){{quest.B}}</label> 
+                    <input type="radio" name="answer" class="answer" id="C" value="{{quest.C}}" {%if selected.answer == quest.C%}checked{%endif%}><label for="C">C){{quest.C}}</label> 
+                    <input type="radio" name="answer" class="answer" id="D" value="{{quest.D}}" {%if selected.answer == quest.D%}checked{%endif%}><label for="D">D){{quest.D}}</label> 
+                </div>
+            </div>
+            <div class="quest-no">
+                {%for a,b in answered.items%}
+                        <a href="/exam/{{a}}">
+                            <p>{{a}}</p>
+                            <p class="check-field" {%if b%}style="background-color:black;"{%endif%}></p>
+                        </a>
+                {%endfor%}
+            </div>
+        {%endfor%}
+            {%if question.has_previous%}
+                <a href="{{question.previous_page_number}}"><img src="{%static 'img/prevquestion.png'%}" alt="prev" id="prev"></a>
+            {%endif%}
+            {%if question.has_next%}
+                <img src="{%static 'img/nextquestion.png'%}" alt="next" onclick="document.forms[0].submit()" id="next">
+            {%endif%}
+        
+    </div>
+    </form>
+    <script>
+
+    var countDownDate = new Date("{{created_at}}").getTime();
+    var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = minutes +"<br>"+ seconds ;
+
+    if(minutes > 44){
+        window.location.href = "http://127.0.0.1:8000/resault";
+    }
+    // If the count down is over, write some text 
+    }, 1000);
+
+    </script>
+</body>

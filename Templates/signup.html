@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{%load static%}
+{%block title%}
+مكتب القوجة | التسجيل
+{% endblock title %}
+    
+{%block content%}
+    <div class="signup">
+        <h1>التسجيل</h1>
+        <div class="signupForm">
+            <form action="" method="post">
+                {{form}} {%if messages%} {% for message in messages%} {{message}}{%endfor%}{%endif%}
+                <button>التسجيل</button>
+            </form>
+        </div>
+    </div>
+{%endblock%}
